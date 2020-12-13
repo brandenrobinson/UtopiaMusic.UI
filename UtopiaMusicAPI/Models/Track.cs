@@ -18,28 +18,61 @@ namespace UtopiaMusicAPI.Models
 
         public string TrackName { get; set; }
 
-        public ICollection<Artist> Artists { get; set; }
+        public ICollection<TrackArtist> TrackArtists { get; set; }
 
-        public ICollection<Album> Albums { get; set; }
+        public ICollection<TrackAlbum> TrackAlbums { get; set; }
     }
 
     public class Artist
     {
         [Key]
-        public int Id { get; set; }
+        public int ArtistId { get; set; }
 
-        public ICollection<Track> Tracks { get; set; }
+        public ICollection<TrackArtist> ArtistTracks { get; set; }
 
-        public ICollection<Album> Albums { get; set; }
+        public ICollection<AlbumArtist> ArtistAlbums { get; set; }
     }
 
     public class Album
     {
         [Key]
-        public int Id { get; set; }
+        public int AlbumId { get; set; }
 
-        public ICollection<Track> Tracks { get; set; }
+        public ICollection<TrackAlbum> AlbumTracks { get; set; }
 
-        public ICollection<Artist> Artists { get; set; }
+        public ICollection<AlbumArtist> AlbumArtists { get; set; }
+    }
+
+    public class TrackArtist
+    {
+        public int TrackId { get; set; }
+
+        public Track Track { get; set; }
+
+        public int ArtistId { get; set; }
+
+        public Artist Artist { get; set; }
+    }
+
+    public class TrackAlbum
+    {
+        public int TrackId { get; set; }
+
+        public Track Track { get; set; }
+
+        public int AlbumId { get; set; }
+
+        public Album Album { get; set; }
+    }
+
+    public class AlbumArtist
+    {
+        public int ArtistId { get; set; }
+
+        public Artist Artist { get; set; }
+
+        public int AlbumId { get; set; }
+
+        public Album Album { get; set; }
     }
 }
